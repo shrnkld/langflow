@@ -6,7 +6,7 @@ from langflow.components.agents.ToolCallingAgent import ToolCallingAgentComponen
 from langflow.components.inputs.ChatInput import ChatInput
 from langflow.components.outputs.ChatOutput import ChatOutput
 from langflow.components.outputs.TextOutput import TextOutputComponent
-from langflow.components.tools.YfinanceTool import YfinanceToolComponent
+from langflow.components.tools.YfinanceTool import YahooFinanceToolComponent
 from langflow.graph.graph.base import Graph
 from langflow.graph.graph.constants import Finish
 
@@ -154,6 +154,6 @@ def test_graph_set_with_invalid_component():
 
 @pytest.mark.skip(reason="Temporarily disabled")
 def test_graph_set_with_valid_component():
-    tool = YfinanceToolComponent()
+    tool = YahooFinanceToolComponent()
     tool_calling_agent = ToolCallingAgentComponent()
     tool_calling_agent.set(tools=[tool])
