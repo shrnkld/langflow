@@ -1,13 +1,14 @@
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from langflow.base.langchain_utilities.model import LCToolComponent
-from langflow.inputs import MessageTextInput, DropdownInput, IntInput, BoolInput
+from langflow.inputs import MessageTextInput, DropdownInput, IntInput
 from langflow.schema import Data
 from langflow.field_typing import Tool
 from langchain.tools import StructuredTool
 import yfinance as yf
 import ast
 import pprint
+
 
 class YahooFinanceToolComponent(LCToolComponent):
     display_name = "Yahoo Finance Tool"
@@ -27,9 +28,16 @@ class YahooFinanceToolComponent(LCToolComponent):
             display_name="Data Method",
             info="The type of data to retrieve.",
             options=[
-                "get_actions", "get_analysis", "get_balance_sheet", "get_calendar",
-                "get_cashflow", "get_info", "get_institutional_holders", "get_news",
-                "get_recommendations", "get_sustainability"
+                "get_actions",
+                "get_analysis",
+                "get_balance_sheet",
+                "get_calendar",
+                "get_cashflow",
+                "get_info",
+                "get_institutional_holders",
+                "get_news",
+                "get_recommendations",
+                "get_sustainability",
             ],
             value="get_news",
         ),
@@ -62,7 +70,7 @@ class YahooFinanceToolComponent(LCToolComponent):
         )
 
     def _yahoo_finance_tool(
-        self, 
+        self,
         symbol: str,
         method: str,
         num_news: Optional[int] = 5,
@@ -83,7 +91,6 @@ class YahooFinanceToolComponent(LCToolComponent):
                 data_list = [Data(data=article) for article in ast.literal_eval(result)]
             else:
                 data_list = [Data(data={"result": result})]
-
 
             return data_list
 
