@@ -317,15 +317,14 @@ export default function ExtraSidebar(): JSX.Element {
             </a>
           )}
         </ParentDisclosureComponent>
-        {ENABLE_MVPS && (
           <>
             <Separator />
 
             <ParentDisclosureComponent
-              defaultOpen={search.length !== 0 || getFilterEdge.length !== 0}
+              defaultOpen={true}
               key={`${search.length !== 0}-${getFilterEdge.length !== 0}-Bundle`}
               button={{
-                title: "Bundles",
+                title: "Integrations",
                 Icon: nodeIconsLucide.unknown,
               }}
               testId="bundle-extended-disclosure"
@@ -349,7 +348,6 @@ export default function ExtraSidebar(): JSX.Element {
                 )}
             </ParentDisclosureComponent>
           </>
-        )}
       </div>
     </div>
   );
